@@ -37,11 +37,11 @@ function App() {
             .then((res) => setData(res.data));
     }, [term]);
     return (
-        <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins  md:h-screen mt-5">
+        <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins md:h-screen mt-5">
             {/* card */}
             {/* bg-[url('./assets/masjid-2.jpeg')] */}
-            <div className="w-[470px] h-[580px] rounded-2xl p-5 bg-[url('./assets/masjid-2.jpeg')] bg-cover m-5 rounded-lg w-full">
-                <div className="flex flex-col w-full  items-center gap-3">
+            <div className="w-[470px] h-[580px] rounded-2xl p-5 bg-[url('./assets/masjid-2.jpeg')] bg-cover m-5">
+                <div className="flex flex-col w-full items-center gap-3">
                     {/* FORM SEARCH */}
                     {/* ketika input di klik/cari panggil onSubmit */}
                     <form
