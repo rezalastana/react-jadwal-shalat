@@ -3,11 +3,22 @@ import "./App.css";
 
 function App() {
     const [input, setInput] = useState("");
-    const [term, setTerm] = useState("Jakarta");
+    const [term, setTerm] = useState("Yogyakarta");
     const [data, setData] = useState([]);
 
     // deklarasi untuk waktu sholat
     const sholat = ["Imsak", "Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
+
+    // ubah hari english menjadi bahasa indonesia
+    const hariIndo = {
+        Monday: "Senin",
+        Tuesday: "Selasa",
+        Wednesday: "Rabu",
+        Thursday: "Kamis",
+        Friday: "Jumat",
+        Saturday: "Sabtu",
+        Sunday: "Minggu",
+    };
 
     // ubah nama waktu sholat menjadi bahasa indonesia
     const sholatIndo = {
@@ -26,9 +37,10 @@ function App() {
             .then((res) => setData(res.data));
     }, [term]);
     return (
-        <div className="flex flex-col gap-5 md:h-screen justify-center items-center m-5 rounded-xl font-poppins">
+        <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins  md:h-screen mt-5">
             {/* card */}
-            <div className="w-[500px] h-[600px] rounded-2xl p-5 bg-[url('./assets/masjid-2.jpeg')] bg-cover">
+            {/* bg-[url('./assets/masjid-2.jpeg')] */}
+            <div className="w-[470px] h-[580px] rounded-2xl p-5 bg-[url('./assets/masjid-2.jpeg')] bg-cover m-5 rounded-lg w-full">
                 <div className="flex flex-col w-full  items-center gap-3">
                     {/* FORM SEARCH */}
                     {/* ketika input di klik/cari panggil onSubmit */}
@@ -45,7 +57,7 @@ function App() {
                             onChange={(e) => setInput(e.target.value)}
                             // onChange={handleInput}
                             type="text"
-                            className="w-[250px] py-2 px-4 rounded-full text-[14px] text-slate-600 outline-none focus:shadow-lg"
+                            className="w-[300px] mt-3 py-3 px-4 rounded-full text-[14px] text-slate-600 outline-none focus:shadow-lg"
                             placeholder="Cari lokasi.."
                             value={input}
                         />
@@ -53,15 +65,24 @@ function App() {
                     </form>
                     <div className="w-full flex justify-between px-[70px] text-[#e3e6e3] mt-5">
                         <div>
-                            <div className="font-bold">
-                                {data.date && data.date.gregorian.weekday.en}
+                            {/* use namaIndo untuk menampilkan hari */}
+                            <div>
+                                {data.date && (
+                                    <div className="font-bold text-lg">
+                                        {
+                                            hariIndo[
+                                                data.date.gregorian.weekday.en
+                                            ]
+                                        }
+                                    </div>
+                                )}
                             </div>
                             <div>{data.date && data.date.readable}</div>
                         </div>
-                        <div className="font-bold text-xl">{term}</div>
+                        <div className="font-bold text-lg">{term}</div>
                     </div>
                     {/* HASIL */}
-                    <ul className="flex flex-col rounded-3xl w-[300px] bg-[#313131] py-4 mt-14">
+                    <ul className="flex flex-col rounded-3xl w-[300px] bg-[#3b3b3b] py-4 px-3 mt-14">
                         {/* pada tailwindcss bisa menggunakan odd jika li dalam keadaan ganjil */}
                         {/* melakukan perulangan */}
                         {data &&
