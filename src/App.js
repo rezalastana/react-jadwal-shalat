@@ -81,7 +81,7 @@ function App() {
         <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins md:h-screen mt-5">
             {/* card */}
             {/* bg-[url('./assets/masjid-2.jpeg')] */}
-            <div className="w-[470px] h-[600px] rounded-2xl p-5 bg-cover m-5 border-2">
+            <div className="w-[370px] md:w-[500px] h-[600px] rounded-2xl p-5 m-5 border-2">
                 <div className="flex flex-col w-full items-center gap-3">
                     {/* TIME */}
                     <h2 className="mt-4">
@@ -114,7 +114,7 @@ function App() {
 
                         <input type="submit" value="" />
                     </form>
-                    <div className="w-full flex justify-between px-[70px] text-[#e3e6e3] mt-5">
+                    <div className="w-full flex justify-between px-[10px] md:px-[70px] text-[#e3e6e3] mt-5">
                         <div>
                             {/* use namaIndo untuk menampilkan hari */}
                             <div>
