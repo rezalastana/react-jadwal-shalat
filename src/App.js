@@ -78,15 +78,15 @@ function App() {
     // };
 
     return (
-        <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins md:h-screen mt-5">
+        <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins md:h-screen mt-5 ">
             {/* card */}
             {/* bg-[url('./assets/masjid-2.jpeg')] */}
-            <div className="w-[370px] md:w-[500px] h-[600px] rounded-2xl p-5 m-5 border-2">
+            <div className="w-[370px] md:w-[500px] h-[600px] rounded-2xl p-5 m-5 border-2 border-lime-400 shadow-xl">
                 <div className="flex flex-col w-full items-center gap-3">
                     {/* TIME */}
                     <h2 className="mt-4">
                         {/* {time.toLocaleTimeString({ hour12: false })} */}
-                        <h2 className="font-bold">
+                        <h2 className="font-bold text-lg">
                             {time.toLocaleTimeString("en-US", {
                                 hour12: false,
                             })}
@@ -107,7 +107,7 @@ function App() {
                             onChange={(e) => setInput(e.target.value)}
                             // onChange={handleInput}
                             type="text"
-                            className="w-[300px] border-2 mt-3 py-3 px-4 rounded-full text-[14px] text-slate-600 outline-none focus:shadow-lg"
+                            className="w-[300px] border-2 mt-3 py-3 px-4 rounded-full text-[14px] text-slate-600 outline-none focus:shadow-lg border-slate-600"
                             placeholder="Cari lokasi.."
                             value={input}
                         />
@@ -119,7 +119,7 @@ function App() {
                             {/* use namaIndo untuk menampilkan hari */}
                             <div>
                                 {data.date && (
-                                    <div className="font-bold text-lg text-black">
+                                    <div className="font-bold text-[15px] text-black">
                                         {
                                             hariIndo[
                                                 data.date.gregorian.weekday.en
@@ -128,11 +128,11 @@ function App() {
                                     </div>
                                 )}
                             </div>
-                            <div className="text-black">
+                            <div className="text-black text-[14px]">
                                 {data.date && data.date.readable}
                             </div>
                         </div>
-                        <div className="font-bold text-lg text-black">
+                        <div className="font-bold text-[17px] text-black mt-2 underline">
                             {term}
                         </div>
                     </div>
@@ -161,7 +161,7 @@ function App() {
                 </div>
             </div>
             <p className="text-black text-center text-sm">
-                * Data bersumber dari {data.meta && data.meta.method.name}
+                *Data bersumber dari {data.meta && data.meta.method.name}
             </p>
         </div>
     );
