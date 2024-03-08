@@ -48,7 +48,7 @@ function App() {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `http://api.aladhan.com/v1/timingsByAddress?address=${term}`
+                    `https://api.aladhan.com/v1/timingsByAddress?address=${term}`
                 );
                 const data = await response.json();
                 setData(data.data);
