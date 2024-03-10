@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -32,6 +32,16 @@ function App() {
         Isha: "Isya",
     };
 
+    // button hide
+    const inputRef = useRef(null);
+
+    const handleKeyPress = (event) => {
+        if (event.key === "Enter") {
+            // Blur the input element to hide the keyboard
+            inputRef.current.blur();
+        }
+    };
+
     useEffect(() => {
         const timerID = setInterval(() => tick(), 1000);
 
@@ -59,23 +69,6 @@ function App() {
 
         fetchData();
     }, [term]);
-
-    // useEffect(() => {
-    //     fetch(`http://api.aladhan.com/v1/timingsByAddress?address=${term}`)
-    //         // lalu jadikan data yang didapat dari API menjadi response json
-    //         .then((res) => res.json())
-    //         .then((res) => setData(res.data));
-    // }, [term]);
-
-    // const baseUrl = "https://api.myquran.com/";
-    // const version = "v2/";
-
-    // fetch data menggunakan async await
-    // const fetchData = async () => {
-    //     const res = await fetch(`${baseUrl}${version}${term}`);
-    //     const data = await res.json();
-    //     setData(data.data);
-    // };
 
     return (
         <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins md:h-screen mt-5 ">
@@ -105,6 +98,8 @@ function App() {
                     >
                         <input
                             onChange={(e) => setInput(e.target.value)}
+                            ref={inputRef}
+                            onKeyDown={handleKeyPress}
                             // onChange={handleInput}
                             type="text"
                             className="w-[300px] border-2 mt-3 py-3 px-4 rounded-full text-[14px] text-slate-600 outline-none focus:shadow-lg border-slate-600"
