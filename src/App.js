@@ -8,6 +8,9 @@ function App() {
     // time
     const [time, setTime] = useState(new Date());
 
+    // useRef
+    const inputRef = useRef(null);
+
     // deklarasi untuk waktu sholat
     const sholat = ["Imsak", "Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
 
@@ -30,16 +33,6 @@ function App() {
         Asr: "Ashar",
         Maghrib: "Maghrib",
         Isha: "Isya",
-    };
-
-    // button hide
-    const inputRef = useRef(null);
-
-    const handleKeyPress = (event) => {
-        if (event.key === "Enter") {
-            // Blur the input element to hide the keyboard
-            inputRef.current.blur();
-        }
     };
 
     useEffect(() => {
@@ -70,6 +63,10 @@ function App() {
         fetchData();
     }, [term]);
 
+    const handleInput = (e) => {
+        setInput(e.target.value);
+    };
+
     return (
         <div className="flex flex-col gap-5 justify-center items-center rounded-xl font-poppins md:h-screen mt-5 ">
             {/* card */}
@@ -94,13 +91,13 @@ function App() {
                             setTerm(input);
                             // kembalikan input ke default
                             setInput("");
+                            // Hide the keyboard by focusing on a different element
+                            inputRef.current.blur();
                         }}
                     >
                         <input
-                            onChange={(e) => setInput(e.target.value)}
-                            ref={inputRef}
-                            onKeyDown={handleKeyPress}
-                            // onChange={handleInput}
+                            // onChange={(e) => setInput(e.target.value)}
+                            onChange={handleInput}
                             type="text"
                             className="w-[300px] border-2 mt-3 py-3 px-4 rounded-full text-[14px] text-slate-600 outline-none focus:shadow-lg border-slate-600"
                             placeholder="Cari lokasi.."
